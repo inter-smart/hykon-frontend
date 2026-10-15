@@ -2,22 +2,23 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 
-const local_data = [
+
+export default function FloatNavigation({ phone, email }) {
+
+  const data = [
   {
     id: 1,
     icon: "/images/floatIcon-call.svg",
-    link: "tel:+919020121121",
+    link: `tel:${phone}`,
     label: "Call Us",
   },
   {
     id: 2,
     icon: "/images/floatIcon-mail.svg",
-    link: "mailto:into@company.com",
+    link: `mailto:${email}`,
     label: "Email Us",
   },
 ];
-
-export default function FloatNavigation({ data = local_data }) {
   return (
     <div
       className={cn(

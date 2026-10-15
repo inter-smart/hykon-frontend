@@ -1,4 +1,5 @@
-"use client";
+  "use client";
+import { useState } from "react";
 import { Text } from "@/components/utils/typography";
 import Image from "next/image";
 
@@ -16,6 +17,21 @@ export default function HomeHero({ data }) {
     },
     [Autoplay({ delay: 5000, stopOnInteraction: true, pauseOnHover: true })],
   );
+  // Tracks each slide's video intrinsic size (videoWidth/videoHeight),
+  // keyed by slide id, once its metadata has loaded.
+  const [videoDimensions, setVideoDimensions] = useState({});
+
+  const handleLoadedMetadata = (slideId) => (e) => {
+    const { videoWidth, videoHeight } = e.currentTarget;
+    setVideoDimensions((prev) => ({
+      ...prev,
+      [slideId]: { width: videoWidth, height: videoHeight },
+    }));
+    console.log(
+      `[HomeHero] video ${slideId} intrinsic size: ${videoWidth}x${videoHeight}`,
+    );
+  };
+
   return (
     <section className="w-full h-auto bg-black overflow-hidden relative z-0">
       <div ref={emblaRef} className="w-full h-full max-w-full overflow-hidden">
@@ -31,10 +47,11 @@ export default function HomeHero({ data }) {
                 <video
                   src={item?.media?.video}
                   autoPlay
-                  muted
+                  muted 
                   loop
                   poster={item?.media?.image ?? "/images/placeholder.jpg"}
                   playsInline
+                  onLoadedMetadata={handleLoadedMetadata(item?.id)}
                   className="w-full h-full object-cover pointer-events-none"
                 />
               ) : (

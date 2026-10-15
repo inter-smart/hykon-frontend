@@ -256,6 +256,7 @@ export default async function RootLayout({ children }) {
   const fontVariable = getFontVariable();
   const fontClassName = getFontClassName();
 
+  console.log(headerData?.sticky_phone_number)
   return (
     <html
       lang="en"
@@ -277,7 +278,7 @@ export default async function RootLayout({ children }) {
       </Script>
       <body className={cn("antialiased", fontClassName, fontVariable)}>
 
-        <FloatNavigation />
+        <FloatNavigation phone={headerData?.sticky_phone_number} email={headerData?.sticky_email} />
 
         <Header
           data={headerData}

@@ -25,7 +25,7 @@ export default function HomeHero({ data }) {
             <div
               key={item?.id}
               className={cn(
-                "flex-[0_0_100%] min-w-0 lg:h-screen min-h-[468px] sm:min-h-[576px] lg:min-h-[520px] 2xl:min-h-[620px] 3xl:min-h-[768px] select-none",
+                "flex-[0_0_100%] min-w-0 lg:h-screen min-h-auto sm:min-h-[576px] lg:min-h-[520px] 2xl:min-h-[620px] 3xl:min-h-[768px] select-none",
               )}
             >
               {item?.mediaType === "video" ? (

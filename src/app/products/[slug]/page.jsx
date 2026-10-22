@@ -115,7 +115,7 @@ export default async function productDetailPage({ params }) {
 
   const page = {
     label: productDetailSection?.productTitle,
-    link: `products?product_slug=${productDetailSection?.productSlug}`,
+    link: productDetailSection?.productSlug,
   };
 
   return (

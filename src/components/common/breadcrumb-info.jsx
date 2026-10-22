@@ -114,12 +114,18 @@ export default function BreadcrumbInfo({
             {page && (
               <>
                 <BreadcrumbItem>
-                  <BreadcrumbLink
-                    className="text-[var(--theme-fg)] hover:text-[var(--theme-color)]"
-                    href={`/${page?.link}`}
-                  >
-                    {page?.label}
-                  </BreadcrumbLink>
+                  {page?.link ? (
+                    <BreadcrumbLink
+                      className="text-[var(--theme-fg)] hover:text-[var(--theme-color)]"
+                      href={`/${page.link}`}
+                    >
+                      {page?.label}
+                    </BreadcrumbLink>
+                  ) : (
+                    <span className="text-[var(--theme-fg)]">
+                      {page?.label}
+                    </span>
+                  )}
                 </BreadcrumbItem>
                 <BreadcrumbSeparator>
                   <div className={dotStyle} />

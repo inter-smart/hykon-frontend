@@ -7,7 +7,7 @@ import Footer from "@/components/layout/footer";
 import FloatNavigation from "@/components/common/float-navigation";
 import HomeQuestions from "@/components/blocks/home/home-questions";
 import Providers from "./providers";
-import {GoogleTagManager} from "@next/third-parties/google"
+import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 
 export const metadata = {
@@ -28,9 +28,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL,
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -256,7 +254,6 @@ export default async function RootLayout({ children }) {
   const fontVariable = getFontVariable();
   const fontClassName = getFontClassName();
 
-  console.log(headerData?.sticky_phone_number)
   return (
     <html
       lang="en"
@@ -273,12 +270,15 @@ export default async function RootLayout({ children }) {
         />
       </head> */}
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-      <Script id="xbotic-chat-widget" strategy="afterInteractive">
-        {`!function(e,t,a){var c=e.head||e.getElementsByTagName("head")[0],n=e.createElement("script");n.async=!0,n.defer=!0,n.type="text/javascript",n.src=t+"/static/js/chat_widget.js?config="+JSON.stringify(a),c.appendChild(n)}(document,"https://xbotic.cbots.live",{bot_key:"1fb6735e3c794a9f",welcome_msg:true,branding_key:"xbotic",server:"https://xbotic.cbots.live",e:"p"});`}
+      <Script id="orai-chat-widget" strategy="afterInteractive">
+        {`!function(e,t,a){var c=e.head||e.getElementsByTagName("head")[0],n=e.createElement("script");n.async=!0,n.defer=!0,n.type="text/javascript",n.src=t+"/static/js/widget.js?config="+JSON.stringify(a),c.appendChild(n)}(document,"https://app.orai-robotics.in",{bot_key:"1fb6735e3c794a9f",welcome_msg:true,branding_key:"orairobotics",server:"https://app.orai-robotics.in",e:"p"});`}
       </Script>
-      <body className={cn("antialiased", fontClassName, fontVariable)}>
 
-        <FloatNavigation phone={headerData?.sticky_phone_number} email={headerData?.sticky_email} />
+      <body className={cn("antialiased", fontClassName, fontVariable)}>
+        <FloatNavigation
+          phone={headerData?.sticky_phone_number}
+          email={headerData?.sticky_email}
+        />
 
         <Header
           data={headerData}
@@ -286,7 +286,6 @@ export default async function RootLayout({ children }) {
           socialLinkData={socialLinkData}
           mobileMenuData={mobileMenuData}
         />
-
 
         <main className="min-h-screen">
           <Providers>

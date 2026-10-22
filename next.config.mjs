@@ -119,6 +119,11 @@ const nextConfig = {
         destination: "/blog",
         permanent: true,
       },
+            {
+        source: "/products/51820310790375",
+        destination: "/products/halo-1200-lithium-battery-inverter",
+        permanent: true,
+      },
     ];
   },
 };

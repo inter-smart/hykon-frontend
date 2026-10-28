@@ -123,7 +123,10 @@ function ProductGrid({ data, slug, categoryFilters }) {
         if (backup_capacity) params.set("backup_capacity", backup_capacity);
         if (backup_hours) params.set("backup_hours", backup_hours);
 
-        const res = await fetch(`${API_URL}/products?${params}`, { signal });
+        const res = await fetch(`${API_URL}/products?${params}`, {
+          signal,
+          cache: "no-store",
+        });
         if (res.ok) {
           const response = await res.json();
           const result =
@@ -180,7 +183,9 @@ function ProductGrid({ data, slug, categoryFilters }) {
       if (backup_capacity) params.set("backup_capacity", backup_capacity);
       if (backup_hours) params.set("backup_hours", backup_hours);
 
-      const res = await fetch(`${API_URL}/products?${params}`);
+      const res = await fetch(`${API_URL}/products?${params}`, {
+        cache: "no-store",
+      });
       if (res.ok) {
         const response = await res.json();
         const result =

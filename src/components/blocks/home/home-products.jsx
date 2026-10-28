@@ -55,6 +55,7 @@ function ProductBlock({ sectionData, parentTitle, reversed }) {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/home-category-wise-product?category_slug=${slug}`,
+        { cache: "no-store" },
       );
       if (!res.ok) throw new Error(`Status ${res.status}`);
       const json = await res.json();

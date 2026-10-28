@@ -26,7 +26,7 @@ export default function CategoriesSection({ data, filterData }) {
         value === "all"
           ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/categories`
           : `${process.env.NEXT_PUBLIC_BASE_URL}/api/categories?use_case=${value}`;
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: "no-store" });
       if (res.ok) {
         const json = await res.json();
         setCategoryItems(json?.data?.categoriesSection?.items ?? []);

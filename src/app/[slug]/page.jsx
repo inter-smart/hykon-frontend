@@ -38,7 +38,9 @@ export default async function ProductsPage({ params }) {
     filterSlugs.forEach((s) => apiParams.append("product_slug[]", s));
 
     console.log("apiParams" , apiParams)
-    const res = await fetch(`${baseUrl}/api/products?${apiParams}`);
+    const res = await fetch(`${baseUrl}/api/products?${apiParams}`, {
+      cache: "no-store",
+    });
 
     if (res.ok) {
       const response = await res.json();

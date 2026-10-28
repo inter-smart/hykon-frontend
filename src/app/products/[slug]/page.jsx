@@ -11,7 +11,9 @@ export async function generateMetadata({ params }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   try {
-    const res = await fetch(`${baseUrl}/api/variant/${slug}`);
+    const res = await fetch(`${baseUrl}/api/variant/${slug}`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) return { title: "" };
 
@@ -67,7 +69,7 @@ export default async function productDetailPage({ params }) {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     const res = await fetch(`${baseUrl}/api/variant/${slug}`, {
-      next: { revalidate: 60 },
+      cache: "no-store",
     });
 
     if (res.ok) {

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   try {
-    const res = await fetch(`${baseUrl}/api/${slug}`);
+    const res = await fetch(`${baseUrl}/api/${slug}`, { cache: "no-store" });
 
     if (!res.ok) return { title: "Category Not Found" };
     
@@ -55,7 +55,7 @@ export default async function categoriesDetailPage({params}) {
   let productsData = null;
     try {
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-      const res = await fetch(`${baseUrl}/api/${slug}`);
+      const res = await fetch(`${baseUrl}/api/${slug}`, { cache: "no-store" });
 
       if (res.ok) {
         const response = await res.json();

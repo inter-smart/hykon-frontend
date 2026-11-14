@@ -77,8 +77,8 @@ const VALIDATION_CONFIG = {
   },
 
   invoiceUpload: {
-    allowedTypes: ["application/pdf"],
-    allowedExtensions: [".pdf"],
+    allowedTypes: ["application/pdf", "image/jpeg", "image/png"],
+    allowedExtensions: [".pdf", ".jpg", ".jpeg", ".png"],
     maxSizeMB: 5,
   },
 };
@@ -577,7 +577,7 @@ export const commonValidations = {
           !(file instanceof File) ||
           VALIDATION_CONFIG.invoiceUpload.allowedTypes.includes(file.type),
         {
-          message: "Only PDF files are allowed",
+          message: "Only PDF, JPEG, and PNG files are allowed",
         },
       )
       .refine(
@@ -587,14 +587,13 @@ export const commonValidations = {
             file.name.toLowerCase().endsWith(ext),
           ),
         {
-          message: "File must have a .pdf extension",
+          message: "File must have a .pdf, .jpg, .jpeg, or .png extension",
         },
       )
       .refine(
         (file) =>
           !(file instanceof File) ||
-          file.size <=
-            VALIDATION_CONFIG.invoiceUpload.maxSizeMB * 1024 * 1024,
+          file.size <= VALIDATION_CONFIG.invoiceUpload.maxSizeMB * 1024 * 1024,
         {
           message: `File is too large. Please upload a file smaller than ${VALIDATION_CONFIG.invoiceUpload.maxSizeMB}MB`,
         },

@@ -381,7 +381,7 @@ export function WarrantyRegistrationForm({ activeTab, page }) {
       uploadedFiles.forEach((file) => {
         formData.append("files[]", file);
       });
-      
+
       if (data.invoice) {
         formData.append("invoice", data.invoice);
       }
@@ -514,7 +514,7 @@ export function WarrantyRegistrationForm({ activeTab, page }) {
                 <input
                   type="file"
                   className="hidden"
-                  accept=".jpg,.jpeg,.png"
+                  accept=".jpg,.jpeg,.png"yes
                   multiple
                   onChange={handleFileChange}
                   disabled={isSubmitting}
@@ -571,7 +571,7 @@ export function WarrantyRegistrationForm({ activeTab, page }) {
                       Invoice upload*
                       <br />
                       <small>
-                        Kindly upload the invoice for the product (PDF only,
+                        Kindly upload the invoice for the product (PDF, JPG or PNG only,
                         Maximum size: 5 MB)
                       </small>
                     </span>
@@ -579,7 +579,7 @@ export function WarrantyRegistrationForm({ activeTab, page }) {
                   <input
                     type="file"
                     className="hidden"
-                    accept=".pdf"
+                    accept=".pdf,.jpg,.jpeg,.png,image/jpeg,image/png,application/pdf"
                     onChange={handleInvoiceChange}
                     disabled={isSubmitting}
                   />

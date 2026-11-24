@@ -134,6 +134,12 @@ const localData = {
       name: "Contact",
       slug: "/contact-us",
     },
+    {
+      id: 10,
+      hasSubmenu: false,
+      name: "Employee Hub",
+      slug: "https://hykonhub.132343.xyz/",
+    },
   ],
   quickLinks: {
     title: "Quick Links",

@@ -101,7 +101,13 @@ export default function HeaderNavigation({
                   />
                 </div>
               ) : item?.slug ? (
-                <Link href={item?.slug} onClick={() => isSheetOpen(false)}>
+                <Link
+                  href={item?.slug}
+                  onClick={() => isSheetOpen(false)}
+                  {...(/^https?:\/\//.test(item?.slug)
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
                   {item?.name}
                 </Link>
               ) : (

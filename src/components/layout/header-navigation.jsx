@@ -45,7 +45,7 @@ export default function HeaderNavigation({
     <div
       ref={navRef}
       className={cn(
-        "flex flex-wrap flex-col lg:flex-row gap-y-0 lg:gap-y-0",
+        "flex flex-col lg:flex-row lg:flex-nowrap gap-y-0 lg:gap-y-0",
         className,
       )}
     >
@@ -71,7 +71,7 @@ export default function HeaderNavigation({
                 }
               }}
               className={cn(
-                "text-[16px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-[400] w-full px-4 lg:px-2.5 xl:px-3.5 2xl:px-4 3xl:px-6 hover:scale-100 py-4 lg:py-0 border-b-1 border-white/20 max-lg:rounded-none max-lg:justify-start lg:border-none",
+                "text-[16px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-[400] whitespace-nowrap w-full px-4 lg:px-2 xl:px-3 2xl:px-4 3xl:px-6 hover:scale-100 py-4 lg:py-0 border-b-1 border-white/20 max-lg:rounded-none max-lg:justify-start lg:border-none",
                 isActive
                   ? "text-[#008dd2] lg:text-[#008dd2]"
                   : isSubmenuOpen

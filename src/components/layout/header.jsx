@@ -87,7 +87,7 @@ function HeaderContent({ data, navigationData, socialLinkData, mobileMenuData })
       )}
     >
       <div className="container min-[1240px]:max-w-[1240px] min-[1408px]:max-w-[1408px] min-[1576px]:max-w-[1576px] min-[1720px]:max-w-[1720px]">
-        <div className="flex justify-between items-center gap-x-3 lg:gap-x-8 relative z-0">
+        <div className="flex justify-between items-center gap-x-3 lg:gap-x-4 xl:gap-x-8 relative z-0">
           <div className="w-[140px] xl:w-[152px] 2xl:w-[182px] 3xl:w-[228px]">
             {data?.logoUrl ? (
               <Link href={data?.slug ?? "/"} aria-label="home">
